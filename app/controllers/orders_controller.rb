@@ -27,6 +27,14 @@ class OrdersController
     @orders_view.display(my_undelivered_orders)
   end
 
+  def mark_as_delivered(employee)
+    my_undelivered_orders = @order_repository.employee_undelivered_orders(employee)
+    @orders_view.display(my_undelivered_orders)
+    index = @orders_view.ask_for_index
+    order = my_undelivered_orders[index]
+    @order_repository.mark_as_delivered(order)
+  end
+
   def list_deliveries
     orders = @order_repository.all
     @orders_view.display(orders)

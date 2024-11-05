@@ -31,6 +31,11 @@ class OrderRepository
     @orders.select { |order| order.employee == employee && !order.delivered? }
   end
 
+  def mark_as_delivered(order)
+    order.deliver!
+    save_csv
+  end
+
   private
 
   def load_csv

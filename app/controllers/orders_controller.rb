@@ -22,6 +22,11 @@ class OrdersController
     @orders_view.display(undelivered_orders)
   end
 
+  def list_my_orders(employee)
+    my_undelivered_orders = @order_repository.employee_undelivered_orders(employee)
+    @orders_view.display(my_undelivered_orders)
+  end
+
   def list_deliveries
     orders = @order_repository.all
     @orders_view.display(orders)

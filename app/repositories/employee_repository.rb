@@ -10,7 +10,19 @@ class EmployeeRepository
   end
 
   def find_by_username(username)
-    @employees.find { |e| e.username == username}
+    @employees.find { |e| e.username == username }
+  end
+
+  def find(id)
+    @employees.find { |e| e.id == id }
+  end
+
+  def all
+    @employees
+  end
+
+  def all_riders
+    @employees.select { |e| e.rider? }
   end
 
   private
